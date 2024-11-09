@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +20,15 @@
   "homepage": "https://github.com/gina-t/employee-tracker#readme",
   "dependencies": {
     "colors": "^1.4.0",
-    "inquirer": "^8.2.4"
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "inquirer": "^8.2.4",
+    "pg": "^8.13.1",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/inquirer": "^9.0.7",
+    "@types/pg": "^8.11.10"
   }
 }
