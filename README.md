@@ -59,15 +59,13 @@ https://drive.google.com/file/d/1J_Y95VqCt2tf5jaCECJv2xnym3GqbOyC/view
 
 ## License
 
-![License](https://img.shields.io/badge/license-MIT License-blue.svg)
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
 ## Contributing Guidelines
 
 Create a new branch for the commit and start a pull request.
 
 ## Testing
-
 
 ## Authors and Acknowledgements
 
