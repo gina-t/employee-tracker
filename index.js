@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import colors from "colors";
-import { viewDepartmentTable, viewRoleTable, viewEmployeeTable, addDepartment, addRole, addEmployee, updateEmployeeRole } from "./src/functions.js";
+import { viewDepartmentTable, viewRoleTable, viewEmployeeTable, addDepartment, fetchDepartments, addRole, fetchRoles, addEmployee, fetchEmployees, updateEmployeeRole } from "./src/functions.js";
 
 const options = [
   {
@@ -40,26 +40,34 @@ function loadPrompts() {
         await addDepartment(departmentAnswers.name);
         break;
       case "ADD_ROLE":
+        const departments = await fetchDepartments();
+        const departmentChoices = departments.map(department => ({ name: department.name, value: department.id }));
         const roleAnswers = await inquirer.prompt([
           { type: "input", name: "title", message: "Enter role title:" },
           { type: "input", name: "salary", message: "Enter role salary:" },
-          { type: "input", name: "department_id", message: "Enter department ID:" }
+          { type: "list", name: "department_id", message: "Which department does the role belong to?", choices: departmentChoices }
         ]);
-        await addRole(roleAnswers.tile, roleAnswers.salary, roleAnswers.department_id);
+        await addRole(roleAnswers.title, roleAnswers.salary, roleAnswers.department_id);
         break;
       case "ADD_EMPLOYEE":
+        const roles = await fetchRoles();
+        const roleChoices = roles.map(role => ({ name: role.title, value: role.id }));
         const employeeAnswers = await inquirer.prompt([
           { type: "input", name: "first_name", message: "Enter employee first name:" },
           { type: "input", name: "last_name", message: "Enter employee last name:" },
-          { type: "input", name: "role_id", message: "Enter role ID:" },
+          { type: "list", name: "role_id", message: "Enter employee's role:", choices: roleChoices },
           { type: "input", name: "manager_id", message: "Enter manager ID:" }
         ]);
         await addEmployee(employeeAnswers.first_name, employeeAnswers.last_name, employeeAnswers.role_id, employeeAnswers.manager_id);
         break;
       case "UPDATE_EMPLOYEE_ROLE":
+        const employees = await fetchEmployees();
+        const employeeChoices = employees.map(employee => ({ name: `${employee.first_name} ${employee.last_name}`, value: employee.id }));
+        const updateRoles = await fetchRoles();
+        const updateRoleChoices = updateRoles.map(role => ({ name: role.title, value: role.id }));
         const updateEmployeeRoleAnswers = await inquirer.prompt([
-          { type: "input", name: "id", message: "Enter employee ID:" },
-          { type: "input", name: "role_id", message: "Enter new role ID:" }
+          { type: "list", name: "id", message: "Select employee:", choices: employeeChoices },
+          { type: "list", name: "role_id", message: "Select new role:", choices: updateRoleChoices }
         ]);
         await updateEmployeeRole(updateEmployeeRoleAnswers.id, updateEmployeeRoleAnswers.role_id);
         break;   
