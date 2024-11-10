@@ -6,9 +6,9 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- [Contributing Guidelines](#contributing guidelines)
+- [Contributing Guidelines](#contributing-guidelines)
 - [Testing](#testing)
-- [Authors and Acknowledgements](#authors and acknowledgements)
+- [Authors and Acknowledgements](#authors-and-acknowledgements)
     
 
 ## Description
@@ -59,9 +59,9 @@ https://drive.google.com/file/d/1J_Y95VqCt2tf5jaCECJv2xnym3GqbOyC/view
 
 ## License
 
-[License](#license)
+![License](https://img.shields.io/badge/license-MIT License-blue.svg)
 
-   
+  
 ## Contributing Guidelines
 
 Create a new branch for the commit and start a pull request.
@@ -71,12 +71,13 @@ Create a new branch for the commit and start a pull request.
 
 ## Authors and Acknowledgements
 
-[Email] (#email)
-https://www.npmjs.com/package/inquirer
+[email] (ginadrcoder@gmail.com)
+
+[Inquirer] (https://www.npmjs.com/package/inquirer)
 
 ## Questions
 
 For enquiries, please contact me at:
 
-[Email] (#email)
-[Github] (#github)
+[email] (ginadrcoder@gmail.com)
+[github] (https://github.com/gina-t)
