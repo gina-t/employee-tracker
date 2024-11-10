@@ -9,7 +9,6 @@
 - [Contributing Guidelines](#contributing-guidelines)
 - [Testing](#testing)
 - [Authors and Acknowledgements](#authors-and-acknowledgements)
-    
 
 ## Description
 
@@ -24,7 +23,7 @@ Install node.js for your operating system
 Create a package.json
 
 ```zsh
-npm init 
+npm init
 ```
 
 Add a new script to package.json
@@ -40,7 +39,7 @@ Add a new script to package.json
 Install dpenedancies
 
 ```zsh
-npm install inquirer colors 
+npm install inquirer colors
 npm install pg
 npm install express
 npm install dotenv
@@ -55,12 +54,12 @@ npm start
 
 ## Usage
 
-https://drive.google.com/file/d/1J_Y95VqCt2tf5jaCECJv2xnym3GqbOyC/view
+https://drive.google.com/file/d/1yquoPpUqNMBvR6N8nBa-9hOqgshwIk81/view
 
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  
+
 ## Contributing Guidelines
 
 Create a new branch for the commit and start a pull request.

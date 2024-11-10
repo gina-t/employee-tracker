@@ -74,10 +74,27 @@ async function addDepartment(name) {
       "INSERT INTO department (name) VALUES ($1) RETURNING *", [name]
     );
     console.table(result.rows);
+    console.log('New department added to the database:', result.rows[0]);
     return result.rows;
 
   } catch (error) {
     console.error('Error executing query', error.stack);
+    throw error;
+  }
+  finally {
+    await client.end();
+  }
+};
+
+async function fetchDepartments() {
+  const client = createClient();
+  try {
+    await client.connect();
+    const result = await client.query("SELECT id, name FROM department");
+    return result.rows;
+
+  } catch (error) {
+    console.error('Error fetching departments', error.stack);
     throw error;
   }
   finally {
@@ -90,13 +107,30 @@ async function addRole(title, salary, department_id) {
   try {
     await client.connect();
     const result = await client.query(
-      "INSERT INTO role (title, salary, department_id) VALUES ($1, $2, $3) RETURNING *", [title, salary, department_id]
+      'INSERT INTO role (title, salary, department_id) VALUES ($1, $2, $3) RETURNING *', 
+      [title, salary, department_id]
     );
     console.table(result.rows);
     return result.rows;
 
   } catch (error) {
     console.error('Error executing query', error.stack);
+    throw error;
+  }
+  finally {
+    await client.end();
+  }
+};
+
+async function fetchRoles() {
+  const client = createClient();
+  try {
+    await client.connect();
+    const result = await client.query("SELECT id, title FROM role");
+    return result.rows;
+
+  } catch (error) {
+    console.error('Error fetching roles', error.stack);
     throw error;
   }
   finally {
@@ -122,6 +156,22 @@ async function addEmployee(first_name, last_name, role_id, manager_id) {
   }
 };
 
+async function fetchEmployees() {
+  const client = createClient();
+  try {
+    await client.connect();
+    const result = await client.query("SELECT id, first_name, last_name FROM employee");
+    return result.rows;
+
+  } catch (error) {
+    console.error('Error fetching employees', error.stack);
+    throw error;
+  }
+  finally {
+    await client.end();
+  }
+};
+
 async function updateEmployeeRole(id, role_id) {
   const client = createClient();
   try {
@@ -140,4 +190,4 @@ async function updateEmployeeRole(id, role_id) {
   }
 };
 
-export { viewDepartmentTable, viewRoleTable, viewEmployeeTable, addDepartment, addRole, addEmployee, updateEmployeeRole };
+export { viewDepartmentTable, viewRoleTable, viewEmployeeTable, addDepartment, fetchDepartments, addRole, fetchRoles, addEmployee, fetchEmployees, updateEmployeeRole };
